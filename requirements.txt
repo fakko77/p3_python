@@ -1,0 +1,3 @@
+- installer pyhton (https://www.python.org/)
+- installer pygame ( pip install pygame)
+
