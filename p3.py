@@ -74,13 +74,14 @@ while continuer:
         niveau.afficher(fenetre)
         nombreAléatoire1 = random.randint(1, 108)
         etherposition = niveau.case(nombreAléatoire1)
-        ether = Objet(ether, etherposition[0], etherposition[1])
+
+        ether = Objet(ethers, etherposition[0], etherposition[1])
         nombreAléatoire2 = random.randint(1, 108)
         seringueposition = niveau.case(nombreAléatoire2)
-        seringue = Objet(seringue, seringueposition[0], seringueposition[1])
+        seringue = Objet(seringues, seringueposition[0], seringueposition[1])
         nombreAléatoire3 = random.randint(1, 108)
         armeposition = niveau.case(nombreAléatoire3)
-        arme = Objet(arme, armeposition[0], armeposition[1])
+        arme = Objet(armes, armeposition[0], armeposition[1])
         mc = Perso(perso_arriere, perso_face, perso_gauche, perso_droite, niveau)
 
     while continuer_jeu:
