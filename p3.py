@@ -4,75 +4,82 @@ from constantes import *
 from classes import *
 import random
 
-'#initialisation'
+'#initialization'
 pygame.init()
 
-'#affichage'
+'#display'
 fenetre = pygame.display.set_mode((cote_fenetre, cote_fenetre))
 pygame.display.set_caption(titre_fenetre)
 icone = pygame.image.load(image_icone)
 pygame.display.set_icon(icone)
+'#initialization variables'
 pts = 0
-pygame.key.set_repeat(400, 30)
 continuer = 1
-etat = 0
+state = 0
+pygame.key.set_repeat(400, 30)
 '#BOUCLE INFINIE'
 while continuer:
-    if etat == 0:
+
+    if state == 0:
         pygame.time.Clock().tick(30)
-        fond = pygame.image.load(image_acceuil).convert()
-        fenetre.blit(fond, (0, 0))
+        '#picture of menu'
+        background = pygame.image.load(image_acceuil).convert()
+        fenetre.blit(background, (0, 0))
         pygame.display.flip()
-        continuer_accueil = 1
-        continuer_jeu = 1
-        while continuer_accueil:
+        continue_home = 1
+        ccontinue_game = 1
+        while continue_home:
 
             pygame.time.Clock().tick(30)
             for event in pygame.event.get():
                 if event.type == KEYDOWN:
                     if event.key == 13:
-                        choix = 1
-                        continuer_accueil = 0
-    elif etat == 2:
+                        choose = 1
+                        continue_home = 0
+
+    elif state == 2:
         pygame.time.Clock().tick(30)
-        fond = pygame.image.load(victoire).convert()
-        fenetre.blit(fond, (0, 0))
+        background = pygame.image.load(victoire).convert()
+        fenetre.blit(background, (0, 0))
         pygame.display.flip()
-        continuer_accueil = 1
-        continuer_jeu = 1
-        while continuer_accueil:
+        continue_home = 1
+        ccontinue_game = 1
+        while continue_home:
 
             pygame.time.Clock().tick(30)
             for event in pygame.event.get():
                 if event.type == KEYDOWN:
 
-                    '#Lancement du niveau 1'
+                    '#Lancement du Level 1'
                     if event.key == 13:
-                        choix = 1
-                        continuer_accueil = 0
-    elif etat == 3:
+                        choose = 1
+                        continue_home = 0
+
+    elif state == 3:
         pygame.time.Clock().tick(30)
-        fond = pygame.image.load(defaite).convert()
-        fenetre.blit(fond, (0, 0))
+        background = pygame.image.load(defaite).convert()
+        fenetre.blit(background, (0, 0))
         pygame.display.flip()
-        continuer_accueil = 1
-        continuer_jeu = 1
-        while continuer_accueil:
+        continue_home = 1
+        ccontinue_game = 1
+        while continue_home:
 
             pygame.time.Clock().tick(30)
             for event in pygame.event.get():
                 if event.type == KEYDOWN:
 
-                    '#Lancement du niveau 1'
+                    '#run level 1'
                     if event.key == 13:
-                        choix = 1
-                        continuer_accueil = 0
-    if choix == 1:
-        fond = pygame.image.load(image_fond).convert()
-        niveau = Niveau("n1")
-        niveau.generer()
-        niveau.afficher(fenetre)
+                        choose = 1
+                        continue_home = 0
+    if choose == 1:
+        background = pygame.image.load(image_fond).convert()
+        Level_ingame = Level("n1")
+        Level_ingame.generer()
+        Level_ingame.display(fenetre)
+        '#creation and random placement of object '
         nombreAléatoire1 = random.randint(1, 108)
+<<<<<<< HEAD
         etherposition = niveau.case(nombreAléatoire1)
 
         ether = Objet(ethers, etherposition[0], etherposition[1])
@@ -83,45 +90,58 @@ while continuer:
         armeposition = niveau.case(nombreAléatoire3)
         arme = Objet(armes, armeposition[0], armeposition[1])
         mc = Perso(perso_arriere, perso_face, perso_gauche, perso_droite, niveau)
+=======
+        etherposition = Level_ingame.random(nombreAléatoire1)
+        ether = Objet(etherObj, etherposition[0], etherposition[1])
+        nombreAléatoire2 = random.randint(1, 108)
+        syringeposition = Level_ingame.random(nombreAléatoire2)
+        syringe = Objet(seringueObj, syringeposition[0], syringeposition[1])
+        nombreAléatoire3 = random.randint(1, 108)
+        weaponposition = Level_ingame.random(nombreAléatoire3)
+        weapon = Objet(armeObj, weaponposition[0], weaponposition[1])
+        mc = character(perso_down, perso_front, perso_left, perso_right, Level_ingame)
+>>>>>>> master
 
-    while continuer_jeu:
+    while ccontinue_game:
         pygame.time.Clock().tick(30)
         for event in pygame.event.get():
             if event.type == K_ESCAPE:
                 continuer = 0
             if event.type == KEYDOWN:
                 if event.key == K_DOWN:
-                    mc.deplacement('bas')
+                    mc.move('down')
                 if event.key == K_UP:
-                    mc.deplacement('haut')
+                    mc.move('up')
                 if event.key == K_RIGHT:
-                    mc.deplacement('droite')
+                    mc.move('right')
                 if event.key == K_LEFT:
-                    mc.deplacement('gauche')
+                    mc.move('left')
         if (mc.x, mc.y) == (ether.x, ether.y):
-            ether = Objet("ressource\ether.png", 0, 270)
+            ether = Objet(etherObj, 0, 270)
             pts = pts + 1
 
-        if (mc.x, mc.y) == (seringue.x, seringue.y):
-            seringue = Objet("ressource\seringue.png", 0, 300)
+        if (mc.x, mc.y) == (syringe.x, syringe.y):
+            syringe = Objet(seringueObj, 0, 300)
             pts = pts + 1
 
-        if (mc.x, mc.y) == (arme.x, arme.y):
-            arme = Objet("ressource/arme.png", 0, 330)
+        if (mc.x, mc.y) == (weapon.x, weapon.y):
+            weapon = Objet(armeObj, 0, 330)
             pts = pts + 1
 
         if (mc.x, mc.y) == (420, 420):
             if pts == 3:
-                continuer_jeu = 0
-                etat = 2
+                ccontinue_game = 0
+                pts = 0
+                state = 2
             else:
-                continuer_jeu = 0
-                etat = 3
+                ccontinue_game = 0
+                pts = 0
+                state = 3
 
-        fenetre.blit(fond, (0, 0))
-        niveau.afficher(fenetre)
+        fenetre.blit(background, (0, 0))
+        Level_ingame.display(fenetre)
         fenetre.blit(mc.direction, (mc.x, mc.y))
         fenetre.blit(ether.direction, (ether.x, ether.y))
-        fenetre.blit(seringue.direction, (seringue.x, seringue.y))
-        fenetre.blit(arme.direction, (arme.x, arme.y))
+        fenetre.blit(syringe.direction, (syringe.x, syringe.y))
+        fenetre.blit(weapon.direction, (weapon.x, weapon.y))
         pygame.display.flip()
