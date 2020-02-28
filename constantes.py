@@ -14,20 +14,15 @@ image_acceuil = "ressource/img_ac.PNG"
 image_fond = "ressource/sol1.png"
 rien = "ressource\r.png"
 test = "ressource\acc.gif"
-image_mur = "ressource\sol.png"
-image_depart = "ressource\depart.png"
-image_arrivee = "ressource\Gardien.png"
+image_mur = "ressource/sol.png"
+image_depart = "ressource/depart.png"
+image_arrivee = "ressource/Gardien.png"
+arme = "ressource/arme.png"
 victoire = "ressource/win.png"
 defaite = "ressource/die.png"
-<<<<<<< HEAD
-ethers = "ressource/ether.png"
-seringues = "ressource\seringue.png"
-armes = "ressource/arme.png"
-=======
 etherObj = "ressource/ether.png"
 seringueObj = "ressource/seringue.png"
 armeObj = "ressource/arme.png"
->>>>>>> master
 
 '#Moving character'
 perso_front = "ressource/p_face.png"

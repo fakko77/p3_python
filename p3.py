@@ -79,18 +79,6 @@ while continuer:
         Level_ingame.display(fenetre)
         '#creation and random placement of object '
         nombreAléatoire1 = random.randint(1, 108)
-<<<<<<< HEAD
-        etherposition = niveau.case(nombreAléatoire1)
-
-        ether = Objet(ethers, etherposition[0], etherposition[1])
-        nombreAléatoire2 = random.randint(1, 108)
-        seringueposition = niveau.case(nombreAléatoire2)
-        seringue = Objet(seringues, seringueposition[0], seringueposition[1])
-        nombreAléatoire3 = random.randint(1, 108)
-        armeposition = niveau.case(nombreAléatoire3)
-        arme = Objet(armes, armeposition[0], armeposition[1])
-        mc = Perso(perso_arriere, perso_face, perso_gauche, perso_droite, niveau)
-=======
         etherposition = Level_ingame.random(nombreAléatoire1)
         ether = Objet(etherObj, etherposition[0], etherposition[1])
         nombreAléatoire2 = random.randint(1, 108)
@@ -100,7 +88,6 @@ while continuer:
         weaponposition = Level_ingame.random(nombreAléatoire3)
         weapon = Objet(armeObj, weaponposition[0], weaponposition[1])
         mc = character(perso_down, perso_front, perso_left, perso_right, Level_ingame)
->>>>>>> master
 
     while ccontinue_game:
         pygame.time.Clock().tick(30)
