@@ -37,17 +37,17 @@ class Level:
 
         num_ligne = 0
         for ligne in self.structure:
-            '# On parcourt les listes de lignes'
+           
             num_case = 0
             for sprite in ligne:
-                '# On calcule la position réelle en pixels'
+     
                 x = num_case * taille_sprite
                 y = num_ligne * taille_sprite
                 if sprite == 'm':  # m = Mur
                     fenetre.blit(mur, (x, y))
-                elif sprite == 'd':  # d = Départ
+                elif sprite == 'd':  # d = Depart
                     fenetre.blit(depart, (x, y))
-                elif sprite == 'a':  # a = Arrivée
+                elif sprite == 'a':  # a = Arrivee
                     fenetre.blit(arrivee, (x, y))
                 num_case += 1
             num_ligne += 1
@@ -81,7 +81,7 @@ class character:
         self.left = pygame.image.load(left).convert_alpha()
         self.right = pygame.image.load(right).convert_alpha()
         self.niveau = niveau
-        '# Position du personnage en cases et en pixels'
+        
         self.case_x = 0
         self.case_y = 0
         self.x = 0
@@ -98,7 +98,7 @@ class character:
                     self.x = self.case_x * taille_sprite
             self.direction = self.right
 
-        '# Déplacement vers la left'
+        '# Deplacement vers la left'
         if direction == 'left':
             if self.case_x > (0):
                 if self.niveau.structure[self.case_y][self.case_x - 1] != 'm':
@@ -106,7 +106,7 @@ class character:
                     self.x = self.case_x * taille_sprite
             self.direction = self.left
 
-        '# Déplacement vers le up'
+        '# Deplacement vers le up'
         if direction == 'up':
             if self.case_y > (0):
                 if self.niveau.structure[self.case_y - 1][self.case_x] != 'm':
@@ -114,7 +114,7 @@ class character:
                     self.y = self.case_y * taille_sprite
             self.direction = self.up
 
-        '# Déplacement vers le down'
+        '# Deplacement vers le down'
         if direction == 'down':
             if self.case_y < (nombre_sprite_cote - 1):
                 if self.niveau.structure[self.case_y + 1][self.case_x] != 'm':
@@ -127,9 +127,9 @@ class Objet:
     """Class to create a character"""
 
     def __init__(self, objet, x, y):
-        '# Sprites du personnage'
+        
         self.objet = pygame.image.load(objet).convert_alpha()
-        '# Position du personnage en cases et en pixels'
+        
         self.x = x
         self.y = y
         self.direction = self.objet
