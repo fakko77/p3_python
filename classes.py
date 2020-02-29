@@ -13,27 +13,24 @@ class Level:
     def generer(self):
         """Method for generating the level according to the file.
         A general list is created, containing a list per line to be displayed"""
-        '#On ouvre le file_lvl'
+        
         with open(self.file_lvl, "r") as file_lvl:
             structure_niveau = []
-            '#On parcourt les lignes du file_lvl'
+            
             for ligne in file_lvl:
                 ligne_niveau = []
 
                 for sprite in ligne:
-                    '#On ignore les "\n" de fin de ligne'
                     if sprite != '\n':
-                        '#On ajoute le sprite à la liste de la ligne'
                         ligne_niveau.append(sprite)
-                '#Onajoute la ligne à la liste du niveau'
+         
                 structure_niveau.append(ligne_niveau)
-            '#On sauvegarde cette structure'
+         
             self.structure = structure_niveau
 
     def display(self, fenetre):
         """Method for displaying the level according to
         of the structure list returned by generer()"""
-        '# Chargement des images (seule celle d arrivée contient de la transparence)'
         mur = pygame.image.load(image_mur).convert()
         depart = pygame.image.load(image_depart).convert()
         arrivee = pygame.image.load(image_arrivee).convert_alpha()
